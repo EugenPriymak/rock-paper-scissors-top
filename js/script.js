@@ -13,10 +13,10 @@ function getPlayerChoice() {
     return prompt("Please write rock, paper or scissors: ").toLowerCase();
 }
 
-function playRound(playerSelection, computerSelection) {
+function getRoundResult() {
     computerSelection = getComputerChoice();
     playerSelection = getPlayerChoice();
-
+    
     switch (playerSelection) {
         case "rock":
             if (computerSelection == "rock") {
@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
                 console.log("Error");
             }
         break;
-
+    
         case "paper":
             if (computerSelection == "paper") {
                 message = "Draw";
@@ -41,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
                 console.log("Error");
             }
         break;
-
+    
         case "scissors":
             if (computerSelection == "scissors") {
                 message = "Draw";
@@ -54,9 +54,15 @@ function playRound(playerSelection, computerSelection) {
             }
         break;
         default:
-            console.log("Input Error! Try again");
-            playRound();
+            message = "===\nInput Error! Try again\n===";
     }
+
+    return message;
+
+
+}
+function playRound(playerSelection, computerSelection) {
+    getRoundResult();
 
     if (message == "You lose") {
         computerScore ++;
@@ -64,11 +70,16 @@ function playRound(playerSelection, computerSelection) {
         playerScore ++;
     } else if (message == "Draw"){
 
-    }else {}
+    }else if (message = "===\nInput Error! Try again\n===") {
+
+    }
     console.log(`${playerSelection} vs. ${computerSelection}`);
+
     console.log(message);
     console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
 }
 
-playRound();
+for (i = 0; i < 5; i++) {
+    playRound();
+}
 
