@@ -1,21 +1,19 @@
 const choice = ["rock", "paper", "scissors"];
-let playerSelection;
-let computerSelection;
+var playerSelection;
+var computerSelection;
 let message;
 let playerScore = 0;
 let computerScore = 0;
 let count;
 
 function getComputerChoice() {
-    return choice[Math.floor(Math.random() * choice.length)];
+    return computerSelection = choice[Math.floor(Math.random() * choice.length)];
 }
 function getPlayerChoice() {
-    return prompt("Please write rock, paper or scissors: ").toLowerCase();
+    return playerSelection = prompt("Please write rock, paper or scissors: ").toLowerCase();
 }
 
 function getRoundResult() {
-    computerSelection = getComputerChoice();
-    playerSelection = getPlayerChoice();
     
     switch (playerSelection) {
         case "rock":
@@ -61,25 +59,41 @@ function getRoundResult() {
 
 
 }
-function playRound(playerSelection, computerSelection) {
+function playRound() {
     getRoundResult();
-
-    if (message == "You lose") {
-        computerScore ++;
-    } else if (message == "You won") {
-        playerScore ++;
-    } else if (message == "Draw"){
-
-    }else if (message = "===\nInput Error! Try again\n===") {
-
-    }
-    console.log(`${playerSelection} vs. ${computerSelection}`);
-
+    if (message == "===\nInput Error! Try again\n===") {
     console.log(message);
-    console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
+    }else {
+        if (message == "You lose") {
+            computerScore ++;
+        } else if (message == "You won") {
+            playerScore ++;
+        } else if (message == "Draw"){
+
+        }else {}
+        console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " vs. " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1));
+        console.log(message);
+        console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
+        return message;
+    }
 }
 
-for (i = 0; i < 5; i++) {
+for (i = 1; i < 6; i++) {
+    console.log("Round " + i);
+    getComputerChoice();
+    getPlayerChoice();
     playRound();
+    if (message == "===\nInput Error! Try again\n===") {
+        i-- ;}
 }
+
+if (playerScore > computerScore) {
+    console.log("You won!")
+} else if (playerScore < computerScore) {
+    console.log("You lose.")
+} else {
+    console.log("Draw.")
+}
+console.log( "Final Score: " + playerScore + " : " + computerScore);
+
 
