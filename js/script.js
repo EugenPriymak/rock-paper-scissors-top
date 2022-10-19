@@ -10,7 +10,7 @@ function getComputerChoice() {
     return choice[Math.floor(Math.random() * choice.length)];
 }
 function getPlayerChoice() {
-    return prompt("Please write rock, paper or scissors: ");
+    return prompt("Please write rock, paper or scissors: ").toLowerCase();
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -20,11 +20,11 @@ function playRound(playerSelection, computerSelection) {
     switch (playerSelection) {
         case "rock":
             if (computerSelection == "rock") {
-                console.log("no one");
+                message = "Draw";
             }else if  (computerSelection == "paper") {
-                console.log("you lose");
+                message = "You lose";
             }else if  (computerSelection == "scissors") {
-                console.log("you win");
+                message = "You won";
             } else {
                 console.log("Error");
             }
@@ -32,11 +32,11 @@ function playRound(playerSelection, computerSelection) {
 
         case "paper":
             if (computerSelection == "paper") {
-                console.log("no one");
+                message = "Draw";
             }else if  (computerSelection == "scissors") {
-                console.log("you lose");
+                message = "You lose";
             }else if  (computerSelection == "rock") {
-                console.log("you win");
+                message = "You won";
             } else {
                 console.log("Error");
             }
@@ -44,18 +44,30 @@ function playRound(playerSelection, computerSelection) {
 
         case "scissors":
             if (computerSelection == "scissors") {
-                console.log("no one");
+                message = "Draw";
             }else if  (computerSelection == "rock") {
-                console.log("you lose");
+                message = "You lose";
             }else if  (computerSelection == "paper") {
-                console.log("you win");
+                message = "You won";
             } else {
                 console.log("Error");
             }
         break;
         default:
             console.log("Input Error! Try again");
+            playRound();
     }
+
+    if (message == "You lose") {
+        computerScore ++;
+    } else if (message == "You won") {
+        playerScore ++;
+    } else if (message == "Draw"){
+
+    }else {}
+    console.log(`${playerSelection} vs. ${computerSelection}`);
+    console.log(message);
+    console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
 }
 
 playRound();
