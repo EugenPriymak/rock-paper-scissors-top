@@ -6,11 +6,20 @@ let playerScore = 0;
 let computerScore = 0;
 let count;
 
+let display = document.querySelector('.display');
+let btnRock = document.querySelector('.rock');
+let btnPaper = document.querySelector('.paper');
+let btnScissors = document.querySelector('.scissors');
+
 function getComputerChoice() {
     return computerSelection = choice[Math.floor(Math.random() * choice.length)];
 }
 function getPlayerChoice() {
-    return playerSelection = prompt("Please write rock, paper or scissors: ").toLowerCase();
+    btnPaper.addEventListener('click', () => playerSelection = "paper");
+    btnRock.addEventListener('click', () => playerSelection = "rock");
+    btnScissors.addEventListener('click', () => playerSelection = "scissors");
+
+    
 }
 
 function getRoundResult() {
@@ -78,14 +87,14 @@ function playRound() {
     }
 }
 
-for (i = 1; i < 6; i++) {
-    console.log("Round " + i);
-    getComputerChoice();
-    getPlayerChoice();
-    playRound();
-    if (message == "===\nInput Error! Try again\n===") {
-        i-- ;}
-}
+// for (i = 1; i < 6; i++) {
+//     console.log("Round " + i);
+//     getComputerChoice();
+//     getPlayerChoice();
+//     playRound();
+//     if (message == "===\nInput Error! Try again\n===") {
+//         i-- ;}
+// }
 
 if (playerScore > computerScore) {
     console.log("You won!")
