@@ -1,4 +1,4 @@
-const choice = ["rock", "paper", "scissors"];
+const choice = ["Rock", "Paper", "Scissors"];
 var playerSelection;
 var computerSelection;
 let message;
@@ -7,6 +7,8 @@ let computerScore = 0;
 let count;
 
 let display = document.querySelector('.display');
+display.setAttribute('style', 'white-space: pre;');
+
 let btnRock = document.querySelector('.rock');
 let btnPaper = document.querySelector('.paper');
 let btnScissors = document.querySelector('.scissors');
@@ -14,55 +16,53 @@ let btnScissors = document.querySelector('.scissors');
 function getComputerChoice() {
     return computerSelection = choice[Math.floor(Math.random() * choice.length)];
 }
-// function getPlayerChoice() {
     btnRock.addEventListener('click', () => {
-        playerSelection = 'rock';
+        playerSelection = 'Rock';
         playRound();
     });
     btnPaper.addEventListener('click', () =>  {
-        playerSelection = 'paper';
+        playerSelection = 'Paper';
         playRound();
     });
     btnScissors.addEventListener('click', () =>  {
-        playerSelection = 'scissors';
+        playerSelection = 'Scissors';
         playRound();
     });
         
-// }
 
 function getRoundResult() {
     
     switch (playerSelection) {
-        case "rock":
-            if (computerSelection == "rock") {
+        case "Rock":
+            if (computerSelection == "Rock") {
                 message = "Draw";
-            }else if  (computerSelection == "paper") {
+            }else if  (computerSelection == "Paper") {
                 message = "You lose";
-            }else if  (computerSelection == "scissors") {
+            }else if  (computerSelection == "Scissors") {
                 message = "You won";
             } else {
                 console.log("Error");
             }
         break;
     
-        case "paper":
-            if (computerSelection == "paper") {
+        case "Paper":
+            if (computerSelection == "Paper") {
                 message = "Draw";
-            }else if  (computerSelection == "scissors") {
+            }else if  (computerSelection == "Scissors") {
                 message = "You lose";
-            }else if  (computerSelection == "rock") {
+            }else if  (computerSelection == "Rock") {
                 message = "You won";
             } else {
                 console.log("Error");
             }
         break;
     
-        case "scissors":
-            if (computerSelection == "scissors") {
+        case "Scissors":
+            if (computerSelection == "Scissors") {
                 message = "Draw";
-            }else if  (computerSelection == "rock") {
+            }else if  (computerSelection == "Rock") {
                 message = "You lose";
-            }else if  (computerSelection == "paper") {
+            }else if  (computerSelection == "Paper") {
                 message = "You won";
             } else {
                 console.log("Error");
@@ -92,60 +92,25 @@ function playRound() {
             } else if (message == "Draw"){
     
             }else {}
-            // console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " vs. " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1));
-            console.log(message);
-            console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
-            // return message;
-        }
+
+            display.textContent = `${playerSelection} vs. ${computerSelection}\r\n${message}  \r\nScore:\r\nYou ${playerScore}:${computerScore} Computer`;
+
         if (computerScore == 5 || playerScore == 5) {
+            display.textContent = `${playerSelection} vs. ${computerSelection}\r\n${message}  \r\nScore:\r\nYou ${playerScore}:${computerScore} Computer`;
         gameOver();
+
+         }
         }
-        // break playRound;
-
     }
-
     function gameOver() {
+
         if (computerScore == 5) {
-            console.log("you lose");
+            alert(`Game over. \nYou lose.\nFinal score:\nYou ${playerScore}:${computerScore} Computer\n`);
         } else {
-            console.log("you win");
+            alert(`Game over. \nYou won!\nFinal score:\nYou ${playerScore}:${computerScore} Computer`);        
         }
-        computerScore = 0;
-        playerScore = 0;
-    }
-// for (i = 1; i < 6; i++) {
-    // console.log("Round " + i);
-    // getComputerChoice();
-    // getPlayerChoice();
-    // playRound();
-    // if (message == "===\nInput Error! Try again\n===") {
-    //     i-- ;}
-// }
-
-// if (playerScore > computerScore) {
-//     console.log("You won!")
-// } else if (playerScore < computerScore) {
-//     console.log("You lose.")
-// } else {
-//     console.log("Draw.")
-// }
-// console.log( "Final Score: " + playerScore + " : " + computerScore);
-
-// getPlayerChoice();
-console.log("h");
-    // if (message == "===\nInput Error! Try again\n===") {
-    //     console.log(message);
-    //     }else {
-    //         if (message == "You lose") {
-    //             computerScore ++;
-    //         } else if (message == "You won") {
-    //             playerScore ++;
-    //         } else if (message == "Draw"){
-    
-    //         }else {}
-    //         // console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " vs. " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1));
-    //         console.log(message);
-    //         console.log(`Score:\nYou ${playerScore}:${computerScore} Computer`);
-// }
-// while ( computerScore <= 5 || playerScore <= 5);
+            computerScore = 0;
+            playerScore = 0;
+            display.textContent = `Score:\nYou ${playerScore}:${computerScore} Computer`;
+}
 
