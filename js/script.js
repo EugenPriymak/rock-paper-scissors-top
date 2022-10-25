@@ -8,6 +8,7 @@ let count;
 
 let display = document.querySelector('.display');
 display.setAttribute('style', 'white-space: pre;');
+display.textContent = ("Rock, Paper or Scissors?")
 
 let btnRock = document.querySelector('.rock');
 let btnPaper = document.querySelector('.paper');
@@ -77,13 +78,10 @@ function getRoundResult() {
 
 }
 function playRound() {
-    console.log("go");
     getComputerChoice();
-    console.log(computerSelection);
     getRoundResult();
     
         if (message == "===\nInput Error! Try again\n===") {
-        console.log(message);
         }else {
             if (message == "You lose") {
                 computerScore ++;
@@ -93,10 +91,9 @@ function playRound() {
     
             }else {}
 
-            display.textContent = `${playerSelection} vs. ${computerSelection}\r\n${message}  \r\nScore:\r\nYou ${playerScore}:${computerScore} Computer`;
+            display.textContent = `${playerSelection} vs. ${computerSelection}\r\n${message}  \r\nScore:\r\nYou ${playerScore}:${computerScore} Computer \r\nChoose again.`;
 
         if (computerScore == 5 || playerScore == 5) {
-            display.textContent = `${playerSelection} vs. ${computerSelection}\r\n${message}  \r\nScore:\r\nYou ${playerScore}:${computerScore} Computer`;
         gameOver();
 
          }
@@ -111,6 +108,7 @@ function playRound() {
         }
             computerScore = 0;
             playerScore = 0;
-            display.textContent = `Score:\nYou ${playerScore}:${computerScore} Computer`;
+display.textContent = ("Rock, Paper or Scissors?")
+
 }
 
